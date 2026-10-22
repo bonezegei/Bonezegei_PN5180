@@ -48,6 +48,7 @@ public:
     bool transceiveCommand(const uint8_t *sendData, uint8_t sendLen, uint8_t *recvData, uint8_t *recvLen, uint8_t validBits = 0);
     bool isCardPresent();
     bool readCardSerial(uint8_t *uidBuffer, uint8_t *uidSize);
+    bool readBlock(uint8_t blockAddr, uint8_t *buffer, uint8_t *bufferLen);
 
 private:
     uint8_t _ssPin;

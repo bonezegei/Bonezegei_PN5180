@@ -191,3 +191,10 @@ bool Bonezegei_PN5180::readCardSerial(uint8_t *uidBuffer, uint8_t *uidSize) {
 
     return true;
 }
+
+bool Bonezegei_PN5180::readBlock(uint8_t blockAddr, uint8_t *buffer, uint8_t *bufferLen) {
+    // 0x30 is the standard ISO/IEC 14443 Type A READ command (NTAG / MIFARE Ultralight / Classic)
+    uint8_t cmd[2] = {0x30, blockAddr};
+    *bufferLen = 16; // Standard block payload length
+    return transceiveCommand(cmd, 2, buffer, bufferLen, 0);
+}
